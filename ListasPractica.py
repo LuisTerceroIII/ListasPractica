@@ -106,7 +106,7 @@ def maxBetween(list1, number1, number2):
 
 #Ejercicio 12
 def swapElement(list1,a,b):
-    list1[a] = aux
+    aux = list1[a]
     list1[a] = list1[b]
     list1[b] = aux
 #Ejercicio 13
@@ -188,22 +188,85 @@ def factorize(number):
             if(cont > 4):
                 play = False
     return factors
+#Ejercicio 20
+def smallerThan(list1, number):
+    count = 0
+    for element in list1:
+        if(element < number):
+            count = count + 1
+    return count #solo devuelve la cantidad de elementos menores al numero ingresado
 
+def orderMinToMax(list1):
+    for e in range(1,len(list1)):
+        for i in range(len(list1) - e):
+            if(list1[i] > list1[i+1]):
+                swapElement(list1,i,i+1)
 
+#Ejercicio 21
+def smallerThanX(list1,x):
+    for i in range(len(list1)):
+        if(list1[i] < x):
+            list1[i] = 0 
 
+#Ejercicio 22
+def invertString(string):
+    copy = ""
+    for char in string:
+        copy = char + copy
+    return copy
 
+def timesEachLetter(string):
+    copy = invertString(string)
+    cont = 0
+    list1 = []
+    for char in string:
+        for char1 in copy:
+            if(char == char1):
+                cont = cont + 1
+        element = char + " : " + str(cont)
+        if(not appear(list1,element)):
+            list1.append(element)
+        cont = 0
+    for elemento in list1:
+        print(elemento)
 
-
-
+#Ejercicio 23
+def timesEachLetter2(string):
+    copy = invertString(string)
+    cont = ""
+    list1 = []
+    for char in string:
+        for char1 in copy:
+            if(char == char1):
+                cont = cont + "*"
+        element = char + " : " + cont
+        if(not appear(list1,element)):
+            list1.append(element)
+        cont = ""
+    for elemento in list1:
+        print(elemento)
     
+#Ejercicio 24
+def pagara(cliente,localidad):
+    total = 0
+    if(cobertura(cliente) == Oro):
+        if(radioDeCobertura(localidad,cliente) == False):
+            total = total + 30 
+    else:
+        if(usados(cliente) > 5):
+            total = total + 50
+        if(radioDeCobertura(localidad,cliente) == False):
+            total = total + 30
+    return total
 
-
-
-
-        
-
-
+#Ejercicio 25
+def controlRuta100(ruta):
+    patentes = darPatentes(ruta)
+    for patente in patentes:
+        if(controlVelocidad(patente) > 100):
+            if(reincidente(patente) == True):
+                enviarMulta(patente,costoActual()*2)
+            else:
+                enviarMulta(patente,costoActual())
+                
     
-    
-
-
