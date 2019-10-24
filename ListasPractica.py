@@ -253,7 +253,7 @@ def pagara(cliente,localidad):
         if(radioDeCobertura(localidad,cliente) == False):
             total = total + 30 
     else:
-        if(usados(cliente) > 5):
+        if(usados(cliente) >= 5):
             total = total + 50
         if(radioDeCobertura(localidad,cliente) == False):
             total = total + 30
@@ -265,8 +265,9 @@ def controlRuta100(ruta):
     for patente in patentes:
         if(controlVelocidad(patente) > 100):
             if(reincidente(patente) == True):
-                enviarMulta(patente,costoActual()*2)
+                 enviarMulta(patente,costoActual()*2)
             else:
-                enviarMulta(patente,costoActual())
+                 enviarMulta(patente,costoActual())
+    
                 
     
